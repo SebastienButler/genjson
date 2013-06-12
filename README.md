@@ -18,17 +18,6 @@ Usage
 -----
 usage: genjson.py [-h] -o ouput json_file;json_name [json_file;json_name ...]
 
-Json Parser Generator for C++  
-
-positional arguments:  
-  json_file;json_name   list of all the schema needed to create the parser,  
-                        each associated with the `jsonObject' name wanted.
-
-optional arguments:  
-  -h, --help            show this help message and exit  
-  -o ouput, --output ouput  
-                        output location.  
-
 Exemple
 -------
 
