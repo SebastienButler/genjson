@@ -1,0 +1,80 @@
+/**
+ * @file   {$FILENAME}
+
+ * @author Sébastien Butler <sebastien.butler@gmail.com>
+ * @date   {$DATE}
+ *
+ * @brief  {$FILENAME} has been generated. Json Object factory
+ *
+ *
+ */
+#ifndef GENJSON_FACTORY_HH_
+# define GENJSON_FACTORY_HH_
+
+# include <memory>
+# include "json_object.hh"
+{$FACT_INCLUDES}
+
+namespace genjson
+{
+  class Factory
+  {
+  public:
+    Factory()
+    {
+      {$FACT_MEMBERS_INIT}
+    }
+
+    ~Factory()
+    {
+    }
+
+  public:
+    JsonObject* createObject(const Json::Value& root)
+    {
+      Json::ValueConstIterator it = root.begin();
+      std::vector<std::string> members;
+      for (; it != root.end(); ++it)
+	members.push_back(it.key().asString());
+
+      {$FACT_OBJECT}
+      return NULL;
+    }
+
+  private:
+    bool isJsonEqual(const std::vector<std::string>& members,
+		     const std::vector<std::string>& json)
+    {
+      std::vector<std::string>::const_iterator itMems;
+      std::vector<std::string>::const_iterator itJson;
+      bool flag = true;
+      for (itJson = json.begin(); itJson != json.end(); ++itJson)
+      {
+	for (itMems = members.begin(); itMems != members.end(); ++itMems)
+	{
+	  if (*itJson == *itMems)
+	  {
+	    flag = false;
+	    break;
+	  }
+	}
+	if (flag)
+	  return false;
+	flag = true;
+      }
+      return true;
+    }
+    {$FACT_MEMBERS}
+  };
+} // namespace genjson
+
+#endif //! GENJSON_FACTORY_HH_
+
+
+
+
+
+
+
+
+

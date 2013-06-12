@@ -1,0 +1,92 @@
+/**
+ * @file   {$FILENAME}
+
+ * @author Sébastien Butler <sebastien.butler@gmail.com>
+ * @date   {$DATE}
+ *
+ * @brief  {$FILENAME} has been generated. Json Object factory
+ *
+ *
+ */
+#ifndef GEN_PARSER_HH_
+# define GEN_PARSER_HH_
+
+#include <json/json.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <memory>
+
+# include "gen_factory.hh"
+
+namespace genjson
+{
+  class Parser
+  {
+  public:
+    Parser()
+      : __genjson_error(""),
+	__genjson_name("Parser")
+    {
+    }
+
+    ~Parser()
+    {
+    }
+
+  public:
+    JsonObject* operator()(const Json::Value& root,
+    		           std::string name = "")
+    {
+      return parse(root, name);
+    }
+
+    JsonObject* parse(const Json::Value& root,
+    		      std::string name = "")
+    {
+      genjson::Factory factory;
+      JsonObject* obj = factory.createObject(root);
+      if (obj == NULL)
+      {
+	__genjson_error += "Cant't find any known constructor for `" + name + "'.";
+	__genjson_exc.setError(__genjson_error);
+	throw __genjson_exc;
+      }
+
+      Json::ValueConstIterator it = root.begin();
+      for (; it != root.end(); ++it)
+      {
+	std::string key = it.key().asString();
+	const Json::Value& val = *it;
+	if (!val.isObject())
+	{
+	  if (val.isString())
+	    obj->setString(val.asString(), key);
+	  else if (val.isBool())
+	    obj->setBool(val.asBool(), key);
+	  else if (val.isInt())
+	    obj->setInteger(val.asInt(), key);
+	  else if (val.isUInt())
+	    obj->setUInt(val.asUInt(), key);
+	  else if (val.isDouble())
+	    obj->setNumber(val.asDouble(), key);
+	  else
+	    obj->setArray(val, key);
+	}
+	else
+	{
+	  std::shared_ptr<JsonObject> ptr (parse(val, key));
+	  obj->setObject(ptr, key);
+	}
+      }
+      return obj;
+    }
+
+  private:
+    std::string		__genjson_error;
+    std::string		__genjson_name;
+    JsonErrorException	__genjson_exc;
+  };
+} // namespace genjson
+
+#endif //! GEN_PARSER_HH_

@@ -1,0 +1,19 @@
+{
+    "name" : "Lol",
+    "properties" : {
+	"level" : {
+	    "type" : "integer",
+	    "description" : "lol level",
+	    "required" : true
+	},
+	"from" : {
+	    "type" : "string",
+	    "description" : "lol's author"
+	}
+	,
+	"to" : {
+	    "type" : "string",
+	    "description" : "lol's destination"
+	}
+    }
+}

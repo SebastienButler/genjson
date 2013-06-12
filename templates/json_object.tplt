@@ -1,0 +1,103 @@
+/**
+ * @file   {$FILENAME}
+
+ * @author Sébastien Butler <sebastien.butler@gmail.com>
+ * @date   {$DATE}
+ *
+ * @brief  {$FILENAME} has been generated. Json Object.
+ *
+ *
+ */
+
+#ifndef GENJSON_JSON_OBJECT_HH_
+# define GENJSON_JSON_OBJECT_HH_
+
+#include <memory>
+#include "gen_error.hh"
+
+namespace genjson
+{
+  class JsonObject
+  {
+  public:
+    JsonObject(const std::string& name)
+      : __genjson_error ("[ " + name + " ] ~~ "),
+	__genjson_name (name)
+    {
+    }
+
+    ~JsonObject()
+    {
+    }
+
+  public:
+    const std::string& getName()
+    {
+      return __genjson_name;
+    }
+
+  public:
+    virtual void setString(const std::string&, const std::string& name)
+    {
+      __genjson_error += "Can't convert `" + name + "' into string";
+      __genjson_exc.setError(__genjson_error);
+      throw __genjson_exc;
+    }
+
+    virtual void setBool(bool, const std::string& name)
+    {
+      __genjson_error += "Can't convert `" + name + "' into bool";
+      __genjson_exc.setError(__genjson_error);
+
+      throw __genjson_exc;
+    }
+
+    virtual void setInteger(int, const std::string& name)
+    {
+      __genjson_error += "Can't convert `" + name + "' into integer";
+      __genjson_exc.setError(__genjson_error);
+
+      throw __genjson_exc;
+    }
+
+    virtual void setUInt(unsigned int, const std::string& name)
+    {
+      __genjson_error += "Can't convert `" + name + "' into unsigned int";
+      __genjson_exc.setError(__genjson_error);
+
+      throw __genjson_exc;
+    }
+
+    virtual void setNumber(double, const std::string& name)
+    {
+      __genjson_error += "Can't convert `" + name + "' into double";
+      __genjson_exc.setError(__genjson_error);
+
+      throw __genjson_exc;
+    }
+
+    virtual void setArray(const Json::Value&, const std::string& name)
+    {
+      __genjson_error += "Can't convert `" + name + "' into array";
+      __genjson_exc.setError(__genjson_error);
+
+      throw __genjson_exc;
+    }
+
+    virtual void setObject(std::shared_ptr<JsonObject>, const std::string& name)
+    {
+      __genjson_error += "Can't convert `" + name + "' into object";
+      __genjson_exc.setError(__genjson_error);
+
+      throw __genjson_exc;
+    }
+
+  protected:
+    std::string __genjson_error;
+    std::string __genjson_name;
+    JsonErrorException __genjson_exc;
+    std::string __uniqueId;
+  };
+}
+
+#endif //! GENJSON_JSON_OBJECT_HH_

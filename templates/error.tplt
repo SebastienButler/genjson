@@ -1,0 +1,60 @@
+/**
+ * @file   {$FILENAME}
+
+ * @author Sébastien Butler <sebastien.butler@gmail.com>
+ * @date   {$DATE}
+ *
+ * @brief  {$FILENAME} has been generated. Error Exception.
+ *
+ *
+ */
+#ifndef GENJSON_GEN_ERROR_HH_
+# define GENJSON_GEN_ERROR_HH_
+
+namespace genjson
+{
+  class JsonErrorException : public std::exception
+  {
+  public:
+    JsonErrorException()
+      : _line (1)
+    {
+    }
+
+    JsonErrorException(const std::string& error)
+      : _error(error),
+	_line (1)
+    {
+    }
+
+    JsonErrorException(const char* error)
+    : _error(error),
+      _line(1)
+    {
+    }
+
+  public:
+    void setError(const std::string& error)
+    {
+      _error = error;
+    }
+
+    const std::string& getError() const
+    {
+      return _error;
+    }
+
+  public:
+    virtual
+    const char* what() const throw()
+    {
+      return getError().c_str();
+    }
+
+  private:
+    std::string _error;
+    int _line;
+  };
+}
+
+#endif //! GENJSON_GEN_ERROR_HH_

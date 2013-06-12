@@ -1,0 +1,9 @@
+{
+    "id": 1,
+    "name": "Foo",
+    "price": 123.0,
+    "stock": {
+        "warehouse": 300.0,
+        "retail": 20.0
+    }
+}

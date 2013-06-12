@@ -1,0 +1,62 @@
+/**
+ * @file   {$FILENAME}
+
+ * @author Sébastien Butler <sebastien.butler@gmail.com>
+ * @date   {$DATE}
+ *
+ * @brief  {$FILENAME} has been generated. Bind to a `{$NAME}' json object
+ *
+ *
+ */
+#ifndef GENJSON_GEN_JSON_{$NAME_UP}_HH_
+# define GENJSON_GEN_JSON_{$NAME_UP}_HH_
+
+# include <memory>
+{$INCLUDE}
+
+namespace genjson
+{
+  class Json{$NAME} : public JsonObject
+  {
+  public:
+    Json{$NAME} ()
+     : JsonObject("Json{$NAME}"){$OBJECT_INIT}
+    {
+    }
+
+    ~Json{$NAME} ()
+    { }
+
+  public:
+    {$STRING_SETTERS}
+    {$INT_SETTERS}
+    {$BOOL_SETTERS}
+    {$UINT_SETTERS}
+    {$DOUBLE_SETTERS}
+    {$ARRAY_SETTERS}
+    {$OBJECT_SETTERS}
+
+  public:
+    {$STRING_GETTERS}
+    {$INT_GETTERS}
+    {$BOOL_GETTERS}
+    {$UINT_GETTERS}
+    {$DOUBLE_GETTERS}
+    {$ARRAY_GETTERS}
+    {$OBJECT_GETTERS}
+
+  private:
+    {$UNIQUE_ID}
+
+  private:
+    {$OBJECT_MEMBERS}
+    {$STRING_MEMBERS}
+    {$INT_MEMBERS}
+    {$BOOL_MEMBERS}
+    {$UINT_MEMBERS}
+    {$DOUBLE_MEMBERS}
+    {$ARRAY_MEMBERS}
+  };
+} // namespace genjson
+
+#endif //! GENJSON_GEN_JSON_{$NAME_UP}_HH_

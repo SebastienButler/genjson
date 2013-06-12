@@ -1,0 +1,31 @@
+{
+    "name": "Product",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "description": "Product identifier",
+            "required": true
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the product",
+            "required": true
+        },
+        "price": {
+            "type": "number",
+            "minimum": 0,
+            "required": true
+        },
+        "stock": {
+            "type": "object",
+            "properties": {
+                "warehouse": {
+                    "type": "number"
+                },
+                "retail": {
+                    "type": "number"
+                }
+            }
+	}
+    }
+}
