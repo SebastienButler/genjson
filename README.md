@@ -37,10 +37,10 @@ You can use the main.cc in the same folder to see how to use the generated code.
 
 Ex:
 
-  $ python genjson.py -o output/ 'test/schema_test.json;product' 'test/schema_lol.json;Lol'</br>
-  $ cp test/main.cc output/genjson/</br>
-  $ cd output/genjson && g++ main.cc -std=c++11 -ljson -o genjson</br>
-  $ ./genjson ../../test/test.json</br>
+  $ python genjson.py -o output/ 'test/schema_test.json;product' 'test/schema_lol.json;Lol'    
+  $ cp test/main.cc output/genjson/  
+  $ cd output/genjson && g++ main.cc -std=c++11 -ljson -o genjson  
+  $ ./genjson ../../test/test.json  
 
 
 Todo
