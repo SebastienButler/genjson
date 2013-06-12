@@ -16,6 +16,9 @@
             "minimum": 0,
             "required": true
         },
+	"description" : {
+	    "type" : "string"
+	},
         "stock": {
             "type": "object",
             "properties": {

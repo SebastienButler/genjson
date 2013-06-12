@@ -322,8 +322,9 @@ class SchemaFactory:
         for name in self.__factObject:
             lst = []
             for (nodeName, node) in self.__properties[name].iteritems():
-                # TODO: do required
-                lst.append(nodeName)
+                if "required" in node:
+                    if node["required"]:
+                        lst.append(nodeName)
             lst.sort()
             res += '_json' + name + ' = { "';
             f = True
