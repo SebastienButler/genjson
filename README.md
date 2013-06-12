@@ -6,13 +6,13 @@ GenJson used json schema (see [format][1]) to generate a full C++11 json parser.
 
 Setup
 -----
- Script requirement:
-	* python
-	* simplejson
+Script requirement:
+* python
+* simplejson
 
- Generate parser requirement:
- 	* compiler with C++11 specification
- 	* [JsonCpp][2]
+Generate parser requirement:
+* compiler with C++11 specification
+* [JsonCpp][2]
 
 Usage
 -----
