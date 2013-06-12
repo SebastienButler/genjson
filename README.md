@@ -34,7 +34,9 @@ Exemple
 
 There is a few schema examples in the test folder with their json associated.
 You can use the main.cc in the same folder to see how to use the generated code.
+
 Ex:
+
   $ python genjson.py -o output/ 'test/schema_test.json;product' 'test/schema_lol.json;Lol'
   $ cp test/main.cc output/genjson/
   $ cd output/genjson && g++ main.cc -std=c++11 -ljson -o genjson
